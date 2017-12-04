@@ -28,6 +28,7 @@ module.exports = {
         contentBase: __dirname + '/dist',
         historyApiFallback: true,
         inline: true,
+        host: '0.0.0.0',
         port: 8080,
     }
 }

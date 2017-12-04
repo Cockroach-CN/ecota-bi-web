@@ -1,13 +1,38 @@
-.chart-card-container {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    >.chart-card {
-        width: 300px;
-        height: 300px;
-        margin: 20px;
-        display: inline-block;
-        background-color: red;
+
+.group-container {
+    padding: 1vw 0px;
+    color: #666666;
+    >.group-title {
+        font-size: 14px;
+        padding: 0 0  5px 2vw;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
+    >.group-list {
+        padding: 0px 2vw;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        >.chart-card {
+            width: 40vw;
+            height: 40vw;
+            margin-right: 2vw;
+            display: inline-block;
+            padding: 10px;
+            .card-title {
+                color: #333333;
+                font-size: 12px
+            }
+        }
+        >.chart-card:last-child {
+            margin-right: 0px;
+        }
+    }
+}
+
+    
+    
+.tabs-container {
+    height: calc(100% - 45px);
 }

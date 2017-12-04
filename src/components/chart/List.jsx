@@ -1,8 +1,10 @@
 import React from "react";
 import Page from "../page/Page.jsx";
-import { Flex, Button } from "antd-mobile";
+import { NavBar, Card, Icon } from "antd-mobile";
 import "./Style.less";
+import settings from "./Settings";
 
+const groups = settings.chartgroups;
 class List extends React.Component {
 
     constructor(props) {
@@ -14,20 +16,31 @@ class List extends React.Component {
     }
 
     render() {
+
         return (
             <Page>
-                <div className="chart-card-container">
-                    <div className="chart-card"></div>
-                    <div className="chart-card"></div>
-                    <div className="chart-card"></div>
-                    <div className="chart-card"></div>
-                </div>
+                <NavBar mode="dark">公司报表</NavBar>
+                {groups.map((group) =>
+                    <div className="group-container" key={group.key}>
+                        <div className="group-title">{group.title}</div>
+                        <div className="group-list">
+                            {group.charts.map((chart) =>
+                                <ChartCard key={chart.key} title={chart.title}
+                                    onClickCard={() => window.location.href = "/info"} />
+                            )}
+                        </div>
+                    </div>
+                )}
             </Page>
         );
     }
 }
 
-const ChartCard = (props) => <div className="chart-card"></div>
+const ChartCard = (props) =>
+    <Card className="chart-card">
+        <div className="card-title">{props.title}</div>
+        <div onClick={(e) => this.onClickCard(e)}></div>
+    </Card>
 
 export default List;
 
