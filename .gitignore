@@ -1,0 +1,8 @@
+/node_modules/
+/temp/
+/dist/
+/test/
+/npm-debug.log
+/yarn-error.log
+.DS_Store
+/config-local.js
