@@ -1,16 +1,17 @@
 import React from "react";
-import { Button } from "antd-mobile";
+import { Flex, Button } from "antd-mobile";
+import "./Style.less";
 
-class A extends React.Component {
+class List extends React.Component {
 
     render() {
         return (
             <div>
-                AAA
+                List
                 <Button mode="primary">点击</Button>
             </div>
         );
     }
 }
 
-export default A;
+export default List;
