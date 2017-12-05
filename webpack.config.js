@@ -19,6 +19,9 @@ module.exports = {
         }, {
             test: /\.less$/,
             loader: 'style-loader!css-loader!less-loader'
+        }, {
+            test: /\.(jpe?g|png|gif)$/,
+            loader: "file-loader?name=images/[name].[ext]?[hash]"
         }]
     },
     plugins: [
@@ -29,6 +32,6 @@ module.exports = {
         historyApiFallback: true,
         inline: true,
         host: '0.0.0.0',
-        port: 8080,
+        port: 8001,
     }
 }

@@ -7,13 +7,12 @@ import A from "../components/A.jsx";
 import B from "../components/B.jsx";
 
 export default (
-    <BrowserRouter>
+    <BrowserRouter basename="/#">
         <Switch>
-            <Route exact path="/" component={List}></Route>
-            <Route exact path="/list" component={List}></Route>
-            <Route exact path="/info" component={Info}></Route>
-            <Route exact path="/a" component={A}></Route>
-            <Route exact path="/b" component={B}></Route>
+            <Route path="/list" component={List}></Route>
+            <Route path="/info/:groupKey/:chartKey" component={Info}> </Route>
+            <Route path="/a" component={A}></Route>
+            <Route path="/b" component={B}></Route>
         </Switch>
     </BrowserRouter>
 );

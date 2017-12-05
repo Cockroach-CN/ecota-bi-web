@@ -10,13 +10,11 @@ class List extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            i: 1,
-            open: true,
+
         }
     }
 
     render() {
-
         return (
             <Page>
                 <NavBar mode="dark">公司报表</NavBar>
@@ -25,8 +23,8 @@ class List extends React.Component {
                         <div className="group-title">{group.title}</div>
                         <div className="group-list">
                             {group.charts.map((chart) =>
-                                <ChartCard key={chart.key} title={chart.title}
-                                    onClickCard={() => window.location.href = "/info"} />
+                                <ChartCard key={chart.key} chart={chart} onClickCard={() =>
+                                    window.location.href = `/#/info/${group.key}/${chart.key}`} />
                             )}
                         </div>
                     </div>
@@ -36,11 +34,18 @@ class List extends React.Component {
     }
 }
 
-const ChartCard = (props) =>
-    <Card className="chart-card">
-        <div className="card-title">{props.title}</div>
-        <div onClick={(e) => this.onClickCard(e)}></div>
-    </Card>
+const ChartCard = (props) => {
+    const chart = props.chart;
+    return (
+        <Card className="chart-card" onClick={(e) => props.onClickCard(e)}>
+            <div className="card-title">{chart.title}</div>
+            <div style={{ margin: "10px 0px", height: "calc(100% - 40px)" }}>
+                <img style={{ width: "100%", height: "100%" }} src={require(`${chart.url}`)} />
+            </div>
+        </Card>
+    );
+}
+
 
 export default List;
 
