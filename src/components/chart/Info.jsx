@@ -1,7 +1,7 @@
 import React from "react";
 import Page from "../page/Page.jsx";
 import {
-    NavBar, Card, Icon, Tabs, Modal, WhiteSpace, DatePicker, List, Tag,
+    NavBar, Card, Icon, Tabs, Modal, WingBlank, WhiteSpace, DatePicker, List, Tag,
     Flex, SegmentedControl, Button,
 } from "antd-mobile";
 import "./Style.less";
@@ -107,6 +107,16 @@ class Info extends React.Component {
                             </DatePicker>
                         </div>
                     </div>
+                    <WingBlank size="sm">
+                        <Flex>
+                            <Flex.Item>
+                                <Button onClick={() => this.setState({ openOptions: false })}>取消</Button>
+                            </Flex.Item>
+                            <Flex.Item>
+                                <Button type="primary" onClick={() => this.setState({ openOptions: false })}> 确定</Button>
+                            </Flex.Item>
+                        </Flex>
+                    </WingBlank>
                     <WhiteSpace size="xl" />
                 </Modal>
             </Page >
