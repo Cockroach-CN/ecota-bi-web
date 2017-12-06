@@ -1,4 +1,5 @@
 window.settings = {
+    basePath: "http://smart.uat.sqbj.com",
     chartgroups: [{
             key: 1,
             title: "一类报表",
