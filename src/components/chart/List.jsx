@@ -2,11 +2,18 @@ import React from "react";
 import Page from "../page/Page.jsx";
 import { NavBar, Card, Icon } from "antd-mobile";
 import "./Style.less";
-import config from "../../../static/settings";
+import { } from "../../services/chartApi.js"
 
-const settings = window.settings || config;
+const settings = window.settings;
 const groups = settings.chartgroups;
 class List extends React.Component {
+
+    componentDidMount() {
+        const doms = document.getElementsByClassName("chart-card");
+        Object.keys(doms).map(key => {
+            doms[key].style.height = doms[key].clientWidth + "px";
+        });
+    }
 
     render() {
         return (

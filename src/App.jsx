@@ -20,15 +20,12 @@ class App extends React.Component {
     render() {
         const { page, infoOpt } = this.state;
         const { groupKey, chartKey } = infoOpt;
-        return (
-            <div className="ecota-page">
-                {this.state.page === "info" ?
-                    <Info groupKey={groupKey} chartKey={chartKey}
-                        backListPage={() => this.backListPage()} /> :
-                    <List toInfoPage={(groupKey, chartKey) => this.toInfoPage(groupKey, chartKey)} />
-                }
-            </div>
-        );
+        if (this.state.page === "info") {
+            return <Info groupKey={groupKey} chartKey={chartKey}
+                backListPage={() => this.backListPage()} />
+        } else {
+            return <List toInfoPage={(groupKey, chartKey) => this.toInfoPage(groupKey, chartKey)} />
+        }
     }
 
     toInfoPage(groupKey, chartKey) {
