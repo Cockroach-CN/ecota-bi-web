@@ -2,17 +2,11 @@ import React from "react";
 import Page from "../page/Page.jsx";
 import { NavBar, Card, Icon } from "antd-mobile";
 import "./Style.less";
-import settings from "./Settings";
+import config from "../../../static/settings";
 
+const settings = window.settings || config;
 const groups = settings.chartgroups;
 class List extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
 
     render() {
         return (
@@ -24,7 +18,7 @@ class List extends React.Component {
                         <div className="group-list">
                             {group.charts.map((chart) =>
                                 <ChartCard key={chart.key} chart={chart} onClickCard={() =>
-                                    window.location.href = `/#/info/${group.key}/${chart.key}`} />
+                                    this.props.toInfoPage(group.key, chart.key)} />
                             )}
                         </div>
                     </div>
@@ -45,7 +39,6 @@ const ChartCard = (props) => {
         </Card>
     );
 }
-
 
 export default List;
 

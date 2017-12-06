@@ -1,5 +1,6 @@
 var path = require("url");
 const webpack = require("webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map',
@@ -25,7 +26,16 @@ module.exports = {
         }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new CopyWebpackPlugin([{
+                from: 'static/index.html',
+                to: 'index.html'
+            },
+            {
+                from: 'static/settings.js',
+                to: 'settings.js'
+            },
+        ])
     ],
     devServer: {
         contentBase: __dirname + '/dist',

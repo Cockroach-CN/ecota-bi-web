@@ -6,21 +6,19 @@ import {
 } from "antd-mobile";
 import { classList } from "../../commons/Style.js"
 import "./Style.less";
-import settings from "./Settings";
 import moment from "moment"
+import config from "../../../static/settings";
 
+const settings = window.settings || config;
 const TimeType = { year: "年", month: "月", date: "日" };
 const defaultOptions = {
     timeType: "date",
     brandIdList: [],
     selectAllBrand: true,
-    companyIdList: [],
-    selectAllCompany: true,
+    marketIdList: [],
+    selectAllMarket: true,
     time: null,
 }
-
-// const a = { ...{ a: 1 }, ...{ b: 2 } }
-
 class Info extends React.Component {
 
     constructor(props) {
@@ -34,24 +32,24 @@ class Info extends React.Component {
 
     render() {
         let tabIndex = 0;
-        const params = this.props.match.params;
-        const charts = (settings.chartgroups.filter(group => String(group.key) === params.groupKey)[0] || {}).charts || [];
+        const { groupKey, chartKey } = this.props;
+        const charts = (settings.chartgroups.filter(group => String(group.key) === String(groupKey))[0] || {}).charts || [];
         const tabs = charts.map((chart, i) => {
-            if (String(params.chartKey) === String(chart.key)) {
+            if (String(chartKey) === String(chart.key)) {
                 tabIndex = i;
             }
             return ({ title: chart.title, sub: chart.key });
         });
         const brands = settings.options.brands || [];
-        const companys = brands[0].companys;
+        const markets = settings.options.markets || [];
         const { openOptions, options, optionsBak } = this.state;
-        const { time, timeType, brandIdList, companyIdList, selectAllBrand, selectAllCompany } = options;
+        const { time, timeType, brandIdList, marketIdList, selectAllBrand, selectAllMarket } = options;
         return (
             <Page>
                 <NavBar mode="dark"
                     icon={<Icon type="left" />}
                     rightContent={<Icon key="1" type="ellipsis" onClick={() => this.setState({ openOptions: true })} />}
-                    onLeftClick={() => window.location.href = "/#/list"}
+                    onLeftClick={() => this.props.backListPage()}
                 >{charts[tabIndex].title}</NavBar>
                 <div style={{ height: "calc(100% - 45px)" }}>
                     <Tabs tabs={tabs}
@@ -99,27 +97,27 @@ class Info extends React.Component {
                     <WhiteSpace size="sm" />
                     <div size="sm" className="options-container">
                         <div>
-                            公司
-                            <Tag selected={selectAllCompany} style={style.tag}
-                                onClick={() => this.setOptions({ companyIdList: [], selectAllCompany: true })}>全部</Tag>
+                            市场
+                            <Tag selected={selectAllMarket} style={style.tag}
+                                onClick={() => this.setOptions({ marketIdList: [], selectAllMarket: true })}>全部</Tag>
                         </div>
                         <div>
-                            {companys.map((company, i) =>
-                                <Tag key={company.id}
+                            {markets.map((market, i) =>
+                                <Tag key={market.id}
                                     className="tag-group"
-                                    selected={companyIdList.indexOf(company.id) > -1}
+                                    selected={marketIdList.indexOf(market.id) > -1}
                                     onClick={(selected) => {
                                         if (selected) {
-                                            options.companyIdList.push(company.id);
-                                            options.selectAllCompany = false;
+                                            options.marketIdList.push(market.id);
+                                            options.selectAllMarket = false;
                                         } else {
-                                            options.companyIdList = companyIdList.filter(id => id !== company.id);
-                                            if (options.companyIdList.length === 0) {
-                                                options.selectAllCompany = true;
+                                            options.marketIdList = marketIdList.filter(id => id !== market.id);
+                                            if (options.marketIdList.length === 0) {
+                                                options.selectAllMarket = true;
                                             }
                                         }
                                         this.setState(this.state);
-                                    }}>{company.name}</Tag>
+                                    }}>{market.name}</Tag>
                             )}
                         </div>
                     </div>
