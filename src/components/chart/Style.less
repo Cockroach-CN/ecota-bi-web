@@ -1,0 +1,72 @@
+
+.group-container {
+    padding: 1vw 0px;
+    color: #333333;
+    >.group-title {
+        color: #666666;
+        font-size: 14px;
+        padding: 0 0  5px 2vw;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    >.group-list {
+        padding: 0px 2vw;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        >.chart-card {
+            width: 40vw;
+            height: 40vw;
+            margin-right: 2vw;
+            display: inline-block;
+            padding: 10px;
+            .card-title {
+                color: #333333;
+                font-size: 12px;
+                height: 20px;
+            }
+        }
+        >.chart-card:last-child {
+            margin-right: 0px;
+        }
+    }
+}
+
+    
+    
+.tabs-container {
+    height: calc(100% - 45px);
+}
+
+.options-container {
+    color: #333333;
+    text-align: left;
+    .tag-group {
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+    .segmented-group {
+        float: right;
+        display: inline-block;
+        width: 150px;
+        margin-top: -5px;
+        margin-right: 10px;
+        >div.am-segment>div.am-segment-item {
+            height: 25px;
+        }
+    }
+    .options-time {
+        border-bottom: 1px solid #ddd;
+        >div>div.am-list-item {
+            padding: 0px;
+        }
+    }
+    >div:first-child{
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    >div {
+        padding: 5px 10px;
+    }
+}
