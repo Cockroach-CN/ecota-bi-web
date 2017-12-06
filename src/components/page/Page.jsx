@@ -1,7 +1,7 @@
 import React from "react";
 import "./Style.less";
 
-class List extends React.Component {
+class Page extends React.Component {
 
     render() {
         return (
@@ -12,4 +12,4 @@ class List extends React.Component {
     }
 }
 
-export default List;
+export default Page;

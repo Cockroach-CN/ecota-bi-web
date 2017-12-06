@@ -7,9 +7,8 @@ import {
 import { classList } from "../../commons/Style.js"
 import "./Style.less";
 import moment from "moment"
-import config from "../../../static/settings";
 
-const settings = window.settings || config;
+const settings = window.settings;
 const TimeType = { year: "年", month: "月", date: "日" };
 const defaultOptions = {
     timeType: "date",
