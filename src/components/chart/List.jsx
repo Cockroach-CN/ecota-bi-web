@@ -41,7 +41,7 @@ const ChartCard = (props) => {
         <Card className="chart-card" onClick={(e) => props.onClickCard(e)}>
             <div className="card-title">{chart.title}</div>
             <div style={{ margin: "10px 0px", height: "calc(100% - 40px)" }}>
-                <iframe src={chart.url} style={{ height: "100%", width: "100%" }} scrolling="no" frameBorder="0"></iframe>
+                <img style={{ width: "100%", height: "100%" }} src={require(`${chart.imageUrl}`)} />
             </div>
         </Card>
     );
