@@ -61,8 +61,9 @@ class Info extends React.Component {
                             // todo
                         }}>
                         {charts.map(chart =>
-                            <div key={chart.key} style={{ WebkitOverflowScrolling: "touch" }}>
-                                <img style={{ width: "100%" }} src={require(`${chart.url}`)} />
+                            <div key={chart.key} style={{ height: "100%", width: "100%" }}>
+                                <iframe src={chart.url} style={{ height: "100%", width: "100%" }} scrolling="no" frameBorder="0"></iframe>
+                                {/* <img style={{ width: "100%" }} src={require(`${chart.url}`)} /> */}
                             </div>
                         )}
                     </Tabs>
