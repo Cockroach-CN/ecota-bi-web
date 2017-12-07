@@ -1,6 +1,6 @@
 import React from "react";
 import Page from "../page/Page.jsx";
-import { NavBar, Card, Icon } from "antd-mobile";
+import { Toast, NavBar, Card, Icon } from "antd-mobile";
 import "./Style.less";
 import { } from "../../services/chartApi.js"
 
@@ -41,7 +41,7 @@ const ChartCard = (props) => {
         <Card className="chart-card" onClick={(e) => props.onClickCard(e)}>
             <div className="card-title">{chart.title}</div>
             <div style={{ margin: "10px 0px", height: "calc(100% - 40px)" }}>
-                <img style={{ width: "100%", height: "100%" }} src={require(`${chart.url}`)} />
+                <iframe src={chart.url} style={{ height: "100%", width: "100%" }} scrolling="no" frameBorder="0"></iframe>
             </div>
         </Card>
     );

@@ -7,7 +7,7 @@ window.settings = {
                     key: 11,
                     title: "财务报表",
                     desc: "",
-                    url: "./images/bar.png",
+                    url: "http://www.baidu.com",
                 },
                 {
                     key: 12,

@@ -1,12 +1,13 @@
 import React from "react";
 import Page from "../page/Page.jsx";
+import List2Column from "../layout/ListToColumn.jsx";
 import {
     NavBar, Card, Icon, Tabs, Modal, WingBlank, WhiteSpace, DatePicker, List,
     Flex, SegmentedControl, Button,
 } from "antd-mobile";
 import { classList } from "../../commons/Style.js"
 import "./Style.less";
-import moment from "moment"
+import moment from "moment";
 
 const settings = window.settings;
 const TimeType = { year: "年", month: "月", date: "日" };
@@ -23,6 +24,7 @@ class Info extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            chartKey: props.chartKey,
             openOptions: false,
             options: this.convertObj(defaultOptions),
             optionsBak: this.convertObj(defaultOptions),
@@ -31,7 +33,8 @@ class Info extends React.Component {
 
     render() {
         let tabIndex = 0;
-        const { groupKey, chartKey } = this.props;
+        const { groupKey } = this.props;
+        const { openOptions, chartKey, options, optionsBak } = this.state;
         const charts = (settings.chartgroups.filter(group => String(group.key) === String(groupKey))[0] || {}).charts || [];
         const tabs = charts.map((chart, i) => {
             if (String(chartKey) === String(chart.key)) {
@@ -41,7 +44,6 @@ class Info extends React.Component {
         });
         const brands = settings.options.brands || [];
         const markets = settings.options.markets || [];
-        const { openOptions, options, optionsBak } = this.state;
         const { time, timeType, brandIdList, marketIdList, selectAllBrand, selectAllMarket } = options;
         return (
             <Page>
@@ -53,10 +55,15 @@ class Info extends React.Component {
                 <div style={{ height: "calc(100% - 45px)" }}>
                     <Tabs tabs={tabs}
                         initialPage={tabIndex}
-                        tabBarPosition="bottom">
+                        tabBarPosition="bottom"
+                        onChange={(tab, index) => {
+                            this.setState({ chartKey: tab.sub });
+                            // todo
+                        }}>
                         {charts.map(chart =>
-                            <div key={chart.key}>
-                                <img style={{ width: "100%", height: "100%" }} src={require(`${chart.url}`)} />
+                            <div key={chart.key} style={{ height: "100%", width: "100%" }}>
+                                <iframe src={chart.url} style={{ height: "100%", width: "100%" }} scrolling="no" frameBorder="0"></iframe>
+                                {/* <img style={{ width: "100%" }} src={require(`${chart.url}`)} /> */}
                             </div>
                         )}
                     </Tabs>
@@ -74,23 +81,25 @@ class Info extends React.Component {
                                 onClick={() => this.setOptions({ brandIdList: [], selectAllBrand: true })}>全部</Tag>
                         </div>
                         <div>
-                            {brands.map((brand, i) =>
-                                <Tag key={brand.id}
-                                    className="tag-group"
-                                    selected={brandIdList.indexOf(brand.id) > -1}
-                                    onClick={(selected) => {
-                                        if (selected) {
-                                            options.brandIdList.push(brand.id);
-                                            options.selectAllBrand = false;
-                                        } else {
-                                            options.brandIdList = brandIdList.filter(id => id !== brand.id);
-                                            if (options.brandIdList.length === 0) {
-                                                options.selectAllBrand = true;
+                            <List2Column>
+                                {brands.map((brand, i) =>
+                                    <Tag key={brand.id} style={{ width: "100%" }}
+                                        className="tag-group"
+                                        selected={brandIdList.indexOf(brand.id) > -1}
+                                        onClick={(selected) => {
+                                            if (selected) {
+                                                options.brandIdList.push(brand.id);
+                                                options.selectAllBrand = false;
+                                            } else {
+                                                options.brandIdList = brandIdList.filter(id => id !== brand.id);
+                                                if (options.brandIdList.length === 0) {
+                                                    options.selectAllBrand = true;
+                                                }
                                             }
-                                        }
-                                        this.setState(this.state);
-                                    }}>{brand.name}</Tag>
-                            )}
+                                            this.setState(this.state);
+                                        }}>{brand.name}</Tag>
+                                )}
+                            </List2Column>
                         </div>
                     </div>
                     <WhiteSpace size="sm" />
@@ -101,23 +110,25 @@ class Info extends React.Component {
                                 onClick={() => this.setOptions({ marketIdList: [], selectAllMarket: true })}>全部</Tag>
                         </div>
                         <div>
-                            {markets.map((market, i) =>
-                                <Tag key={market.id}
-                                    className="tag-group"
-                                    selected={marketIdList.indexOf(market.id) > -1}
-                                    onClick={(selected) => {
-                                        if (selected) {
-                                            options.marketIdList.push(market.id);
-                                            options.selectAllMarket = false;
-                                        } else {
-                                            options.marketIdList = marketIdList.filter(id => id !== market.id);
-                                            if (options.marketIdList.length === 0) {
-                                                options.selectAllMarket = true;
+                            <List2Column>
+                                {markets.map((market, i) =>
+                                    <Tag key={market.id} style={{ width: "100%" }}
+                                        className="tag-group"
+                                        selected={marketIdList.indexOf(market.id) > -1}
+                                        onClick={(selected) => {
+                                            if (selected) {
+                                                options.marketIdList.push(market.id);
+                                                options.selectAllMarket = false;
+                                            } else {
+                                                options.marketIdList = marketIdList.filter(id => id !== market.id);
+                                                if (options.marketIdList.length === 0) {
+                                                    options.selectAllMarket = true;
+                                                }
                                             }
-                                        }
-                                        this.setState(this.state);
-                                    }}>{market.name}</Tag>
-                            )}
+                                            this.setState(this.state);
+                                        }}>{market.name}</Tag>
+                                )}
+                            </List2Column>
                         </div>
                     </div>
                     <WhiteSpace size="sm" />
