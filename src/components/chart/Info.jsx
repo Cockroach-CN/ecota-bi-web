@@ -53,7 +53,7 @@ class Info extends React.Component {
                     onLeftClick={() => this.props.backListPage()}
                 >{charts[tabIndex].title}</NavBar>
                 <div style={{ height: "calc(100% - 45px)" }}>
-                    <Tabs tabs={tabs}
+                    <Tabs tabs={tabs} swipeable={false}
                         initialPage={tabIndex}
                         tabBarPosition="bottom"
                         onChange={(tab, index) => {
@@ -61,9 +61,10 @@ class Info extends React.Component {
                             // todo
                         }}>
                         {charts.map(chart =>
-                            <div key={chart.key} style={{ height: "100%", width: "100%" }}>
-                                <iframe src={chart.url} style={{ height: "100%", width: "100%" }} scrolling="no" frameBorder="0"></iframe>
-                                {/* <img style={{ width: "100%" }} src={require(`${chart.url}`)} /> */}
+                            <div key={chart.key} className="iframe-container">
+                                <iframe id="_blank" name="_blank" src={chart.htmlUrl} frameBorder="0"
+                                    style={{ height: "100%", width: "100%" }}
+                                ></iframe>
                             </div>
                         )}
                     </Tabs>
