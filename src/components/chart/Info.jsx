@@ -162,10 +162,12 @@ class Info extends React.Component {
                     <WingBlank size="sm">
                         <Flex>
                             <Flex.Item>
-                                <Button
-                                    onClick={() => this.setState({ openOptions: false },
-                                        () => this.setState({ options: this.convertObj(optionsBak) }))} >
-                                    取消
+                                <Button type="ghost"
+                                    onClick={() => this.setState({
+                                        options: this.convertObj(defaultOptions),
+                                        optionsBak: this.convertObj(defaultOptions),
+                                    })} >
+                                    重置
                                 </Button>
                             </Flex.Item>
                             <Flex.Item>
