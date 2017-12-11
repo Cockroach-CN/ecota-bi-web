@@ -11,7 +11,7 @@ class List extends React.Component {
     componentDidMount() {
         const doms = document.getElementsByClassName("chart-card");
         Object.keys(doms).map(key => {
-            doms[key].style.height = doms[key].clientWidth + "px";
+            doms[key].style.height = doms[key].clientWidth - 20 + "px";
         });
     }
 
