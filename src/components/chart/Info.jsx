@@ -53,9 +53,10 @@ class Info extends React.Component {
                     onLeftClick={() => this.props.backListPage()}
                 >{charts[tabIndex].title}</NavBar>
                 <div style={{ height: "calc(100% - 45px)" }}>
-                    <Tabs tabs={tabs} swipeable={false}
+                    <Tabs tabs={tabs} swipeable={false} tabBarUnderlineStyle={{ display: "none" }}
                         initialPage={tabIndex}
                         tabBarPosition="bottom"
+                        renderTab={(tab) => <div className={classList("chart-tab-bar", tab.sub && "hart-tab-bar-active")}>{tab.title}</div>}
                         onChange={(tab, index) => {
                             this.setState({ chartKey: tab.sub });
                             // todo
