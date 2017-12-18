@@ -1,4 +1,5 @@
 import Ajax from "../commons/Ajax";
+import $ from "jquery";
 
 const settings = window.settings;
 

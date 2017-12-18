@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 // import Router from "./commons/Router.jsx";
 import List from "./components/chart/List.jsx";
 import Info from "./components/chart/Info.jsx";
-import "./App.css";
+import "./App.less";
 import 'antd-mobile/dist/antd-mobile.css';
 class App extends React.Component {
     constructor() {
