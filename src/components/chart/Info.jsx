@@ -56,7 +56,7 @@ class Info extends React.Component {
                     <Tabs tabs={tabs} swipeable={false} tabBarUnderlineStyle={{ display: "none" }}
                         initialPage={tabIndex}
                         tabBarPosition="bottom"
-                        renderTab={(tab) => <div className={classList("chart-tab-bar", tab.sub && "hart-tab-bar-active")}>{tab.title}</div>}
+                        renderTab={(tab) => <div className={classList("chart-tab-bar", tab.sub === charts[tabIndex].key && "chart-tab-bar-active")}>{tab.title}</div>}
                         onChange={(tab, index) => {
                             this.setState({ chartKey: tab.sub });
                             // todo
