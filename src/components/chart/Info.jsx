@@ -49,7 +49,7 @@ class Info extends React.Component {
             <Page>
                 <NavBar mode="dark"
                     icon={<Icon type="left" />}
-                    rightContent={<Icon key="1" type="ellipsis" onClick={() => this.setState({ openOptions: true })} />}
+                    // rightContent={<Icon key="1" type="ellipsis" onClick={() => this.setState({ openOptions: true })} />}
                     onLeftClick={() => this.props.backListPage()}
                 >{charts[tabIndex].title}</NavBar>
                 <div style={{ height: "calc(100% - 45px)" }}>
