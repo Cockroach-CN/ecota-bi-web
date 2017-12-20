@@ -11,7 +11,7 @@ class List extends React.Component {
     componentDidMount() {
         const doms = document.getElementsByClassName("chart-card");
         Object.keys(doms).map(key => {
-            doms[key].style.height = doms[key].clientWidth - 20 + "px";
+            doms[key].style.height = doms[key].clientWidth + "px";
         });
     }
 
@@ -39,9 +39,7 @@ const ChartCard = (props) => {
     const chart = props.chart;
     return (
         <div className="chart-card" onClick={(e) => props.onClickCard(e)}>
-            <div style={{}}>
-                <img style={{ width: "100%", height: "100%" }} src={require(`${chart.imageUrl}`)} />
-            </div>
+            <img style={{ width: "100%", height: "100%" }} src={require(`${chart.imageUrl}`)} />
             <div className="card-title">{chart.title}</div>
         </div>
     );
