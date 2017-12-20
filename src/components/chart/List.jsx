@@ -39,7 +39,7 @@ const ChartCard = (props) => {
     const chart = props.chart;
     return (
         <div className="chart-card" onClick={(e) => props.onClickCard(e)}>
-            <div style={{ margin: "0 10px 5px 10px", height: "calc(100% - 20px)" }}>
+            <div style={{}}>
                 <img style={{ width: "100%", height: "100%" }} src={require(`${chart.imageUrl}`)} />
             </div>
             <div className="card-title">{chart.title}</div>

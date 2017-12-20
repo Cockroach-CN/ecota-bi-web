@@ -1,48 +1,41 @@
-window.settings = {
+﻿window.settings = {
     basePath: "http://smart.uat.sqbj.com",
     chartgroups: [{
         key: 1,
-        title: "一类报表",
+        title: "销售分析",
         charts: [{
             key: 11,
-            title: "财务报表",
-            imageUrl: "./images/pie.png",
-            htmlUrl: "https://www.baidu.com",
+            title: "仪表盘",
+            imageUrl: "./images/pie2.png",
+            htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=xiabuxiabu",
             desc: "",
 
         },
         {
             key: 12,
-            title: "工单报表",
-            imageUrl: "./images/pie.png",
-            htmlUrl: "http://www.baidu.com",
+            title: "同环比",
+            imageUrl: "./images/line.png",
+            htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=xiabuxiabu2",
             desc: "",
         },
         {
             key: 13,
-            title: "活跃报表",
+            title: "排名",
             imageUrl: "./images/bar.png",
-            htmlUrl: "http://www.taobao.com",
+            htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=xb_pm",
             desc: "",
         }, {
             key: 14,
-            title: "认证报表",
-            imageUrl: "./images/pie.png",
-            htmlUrl: "https://www.jd.com",
+            title: "完成率",
+            imageUrl: "./images/scatter.png",
+            htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=Budget",
             desc: "",
         },
         {
             key: 15,
-            title: "认证报表",
-            imageUrl: "./images/bar.png",
-            htmlUrl: "http://www.baidu.com",
-            desc: "",
-        },
-        {
-            key: 16,
-            title: "认证报表",
+            title: "会员",
             imageUrl: "./images/pie.png",
-            htmlUrl: "http://www.baidu.com",
+            htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=xiabu_member",
             desc: "",
         }
         ]
