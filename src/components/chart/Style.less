@@ -20,16 +20,20 @@ iframe{
         -webkit-overflow-scrolling: touch;
         >.chart-card {
             width: 32%;
-            padding: 5px 10px;
+            // padding: 5px 10px;
             margin-right: 2%;
             margin-bottom: 5px;
             display: inline-block;
-            background-color: #ffffff;
-            box-shadow: 0 2px 8px 0 rgba(139,139,139,0.30);
+            position: relative;
+            // background-color: #ffffff;
+            // box-shadow: 0 2px 8px 0 rgba(139,139,139,0.30);
             .card-title {
+                width: 100%;
+                position: absolute;
                 text-align: center;
                 color: #333333;
                 font-size: 12px;
+                bottom: -10px;
             }
         }
         >.chart-card:last-child {
