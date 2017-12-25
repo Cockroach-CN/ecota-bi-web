@@ -54,7 +54,7 @@
             key: 22,
             title: "工单报表",
             imageUrl: "./images/pie.png",
-            htmlUrl: "http://www.baidu.com",
+            htmlUrl: "http://www.qq.com",
             desc: "",
         },
         ]
