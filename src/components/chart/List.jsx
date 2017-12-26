@@ -18,7 +18,7 @@ class List extends React.Component {
     render() {
         return (
             <Page>
-                <NavBar mode="dark">公司报表</NavBar>
+                {/* <NavBar mode="dark">公司报表</NavBar> */}
                 {groups.map((group) =>
                     <div className="group-container" key={group.key}>
                         <div className="group-title">{group.title}</div>
