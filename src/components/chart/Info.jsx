@@ -53,7 +53,9 @@ class Info extends React.Component {
                     onLeftClick={() => this.props.backListPage()}
                 >{charts[tabIndex].title}</NavBar> */}
                 <div style={{ height: "100%", position: "relative" }}>
-                    <div className="float-back" onClick={() => this.props.backListPage()}><Icon type="left" /></div>
+                    <div className="float-back" onClick={() => this.props.backListPage()}>
+                        <i className="glyphicon glyphicon-arrow-left"></i>
+                    </div>
                     <Tabs tabs={tabs} swipeable={false} tabBarUnderlineStyle={{ display: "none" }}
                         initialPage={tabIndex}
                         tabBarPosition="bottom"
