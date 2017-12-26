@@ -5,6 +5,7 @@ import List from "./components/chart/List.jsx";
 import Info from "./components/chart/Info.jsx";
 import "./App.less";
 import 'antd-mobile/dist/antd-mobile.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 class App extends React.Component {
     constructor() {
         super();
