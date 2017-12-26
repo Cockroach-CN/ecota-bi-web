@@ -47,12 +47,13 @@ class Info extends React.Component {
         const { time, timeType, brandIdList, marketIdList, selectAllBrand, selectAllMarket } = options;
         return (
             <Page>
-                <NavBar mode="dark"
+                {/* <NavBar mode="dark"
                     icon={<Icon type="left" />}
-                    // rightContent={<Icon key="1" type="ellipsis" onClick={() => this.setState({ openOptions: true })} />}
+                    rightContent={<Icon key="1" type="ellipsis" onClick={() => this.setState({ openOptions: true })} />}
                     onLeftClick={() => this.props.backListPage()}
-                >{charts[tabIndex].title}</NavBar>
-                <div style={{ height: "calc(100% - 45px)" }}>
+                >{charts[tabIndex].title}</NavBar> */}
+                <div style={{ height: "100%", position: "relative" }}>
+                    <div className="float-back" onClick={() => this.props.backListPage()}><Icon type="left" /></div>
                     <Tabs tabs={tabs} swipeable={false} tabBarUnderlineStyle={{ display: "none" }}
                         initialPage={tabIndex}
                         tabBarPosition="bottom"
