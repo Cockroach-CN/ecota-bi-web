@@ -66,9 +66,10 @@ class Info extends React.Component {
                         }}>
                         {charts.map(chart =>
                             <div key={chart.key} className="iframe-container">
-                                <iframe id="_blank" name="_blank" src={chart.htmlUrl} frameBorder="0"
-                                    style={{ height: "100%", width: "100%" }}
-                                ></iframe>
+                                {chart.key === chartKey ?
+                                    <iframe id="_blank" name="_blank" src={chart.htmlUrl} frameBorder="0"
+                                        style={{ height: "100%", width: "100%" }}
+                                    ></iframe> : null}
                             </div>
                         )}
                     </Tabs>
