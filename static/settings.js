@@ -30,31 +30,24 @@
             imageUrl: "./images/scatter.png",
             htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=Budget",
             desc: "",
-        },
-        {
-            key: 15,
-            title: "会员",
-            imageUrl: "./images/pie.png",
-            htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=xiabu_member",
-            desc: "",
         }
         ]
     },
     {
         key: 2,
-        title: "二类报表",
+        title: "会员分析",
         charts: [{
             key: 21,
-            title: "人力报表",
-            imageUrl: "./images/bar.png",
-            htmlUrl: "http://www.baidu.com",
+            title: "会员",
+            imageUrl: "./images/pie.png",
+            htmlUrl: "http://biqx.xiabu.com:9999/xiabuSenseSSO/openUrl?pageName=xiabu_member",
             desc: "",
         },
         {
             key: 22,
-            title: "工单报表",
+            title: "功能待扩充",
             imageUrl: "./images/pie.png",
-            htmlUrl: "http://www.qq.com",
+            htmlUrl: "",
             desc: "",
         },
         ]

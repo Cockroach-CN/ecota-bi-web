@@ -58,6 +58,7 @@ class Info extends React.Component {
                     </div>
                     <Tabs tabs={tabs} swipeable={false} tabBarUnderlineStyle={{ display: "none" }}
                         initialPage={tabIndex}
+                        prerenderingSiblingsNumber={100}
                         tabBarPosition="bottom"
                         renderTab={(tab) => <div className={classList("chart-tab-bar", tab.sub === charts[tabIndex].key && "chart-tab-bar-active")}>{tab.title}</div>}
                         onChange={(tab, index) => {
