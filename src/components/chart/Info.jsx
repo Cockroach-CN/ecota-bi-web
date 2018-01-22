@@ -3,11 +3,12 @@ import Page from "../page/Page.jsx";
 import List2Column from "../layout/ListToColumn.jsx";
 import {
     NavBar, Card, Icon, Tabs, Modal, WingBlank, WhiteSpace, DatePicker, List,
-    Flex, SegmentedControl, Button,
+    Flex, SegmentedControl, Button, Carousel,
 } from "antd-mobile";
 import { classList } from "../../commons/Style.js"
 import "./Style.less";
 import moment from "moment";
+import echarts from "echarts";
 
 const settings = window.settings;
 const TimeType = { year: "年", month: "月", date: "日" };
@@ -19,6 +20,67 @@ const defaultOptions = {
     selectAllMarket: true,
     time: null,
 }
+
+var option1 = {
+    backgroundColor: "#FFFFFF",
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line'
+    }]
+}
+
+var option2 = {
+    backgroundColor: "#FFFFFF",
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+    },
+    series: [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data: [
+                { value: 335, name: '直接访问' },
+                { value: 310, name: '邮件营销' },
+                { value: 234, name: '联盟广告' },
+                { value: 135, name: '视频广告' },
+                { value: 1548, name: '搜索引擎' }
+            ]
+        }
+    ]
+}
 class Info extends React.Component {
 
     constructor(props) {
@@ -29,6 +91,18 @@ class Info extends React.Component {
             options: this.convertObj(defaultOptions),
             optionsBak: this.convertObj(defaultOptions),
         }
+    }
+
+    componentDidMount() {
+        const cardHeight = document.getElementById("echart-card").clientWidth;
+        var chart1Dom = document.getElementById("chart1");
+        chart1Dom.style.width = cardHeight + "px";
+        const chart1 = echarts.init(chart1Dom);
+        chart1.setOption(option1);
+        var chart2Dom = document.getElementById("chart2");
+        chart2Dom.style.width = cardHeight + "px";
+        const chart2 = echarts.init(chart2Dom);
+        chart2.setOption(option2);
     }
 
     render() {
@@ -53,8 +127,11 @@ class Info extends React.Component {
                     onLeftClick={() => this.props.backListPage()}
                 >{charts[tabIndex].title}</NavBar> */}
                 <div style={{ height: "100%", position: "relative" }}>
-                    <div className="float-back" onClick={() => this.props.backListPage()}>
-                        <i className="glyphicon glyphicon-arrow-left"></i>
+                    <div className="ecota-navbar">
+                        <i className="glyphicon glyphicon-arrow-left"
+                            onClick={() => this.props.backListPage()}></i>
+                        <i className="glyphicon glyphicon-option-horizontal"
+                            onClick={() => this.setState({ openOptions: true })}></i>
                     </div>
                     <Tabs tabs={tabs} swipeable={false} tabBarUnderlineStyle={{ display: "none" }}
                         initialPage={tabIndex}
@@ -65,14 +142,20 @@ class Info extends React.Component {
                             this.setState({ chartKey: tab.sub });
                             // todo
                         }}>
-                        {charts.map(chart =>
-                            <div key={chart.key} className="iframe-container">
-                                {chart.key === chartKey ?
-                                    <iframe id="_blank" name="_blank" src={chart.htmlUrl} frameBorder="0"
-                                        style={{ height: "100%", width: "100%" }}
-                                    ></iframe> : null}
-                            </div>
-                        )}
+                        <div id="echart-card">
+                            <Carousel style={{ width: "calc(100% - 10)", margin: 5, boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)" }}>
+                                <div id="chart1" style={{ height: 300, width: "calc(100% - 40)", backgroundColor: "#ffffff" }}>1111</div>
+                                <div id="chart2" style={{ height: 300, width: "calc(100% - 40)", backgroundColor: "#ffffff" }}>2222</div>
+                            </Carousel>
+                            <Carousel style={{ width: "calc(100% - 10)", margin: 5, boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)" }}>
+                                <div style={{ height: 300, backgroundColor: "#ffffff" }}>3333</div>
+                                <div style={{ height: 300, backgroundColor: "#ffffff" }}>4444</div>
+                            </Carousel>
+                            <Carousel style={{ width: "calc(100% - 10)", margin: 5, boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)" }}>
+                                <div style={{ height: 300, backgroundColor: "#ffffff" }}>5555</div>
+                                <div style={{ height: 300, backgroundColor: "#ffffff" }}>6666</div>
+                            </Carousel>
+                        </div>
                     </Tabs>
                 </div>
                 <Modal popup maskClosable
