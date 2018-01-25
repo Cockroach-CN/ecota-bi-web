@@ -9,6 +9,7 @@ import { classList } from "../../commons/Style.js"
 import "./Style.less";
 import moment from "moment";
 import echarts from "echarts";
+import { getData } from "./info"
 
 const settings = window.settings;
 const TimeType = { year: "年", month: "月", date: "日" };
@@ -21,66 +22,7 @@ const defaultOptions = {
     time: null,
 }
 
-var option1 = {
-    backgroundColor: "#FFFFFF",
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line'
-    }]
-}
 
-var option2 = {
-    backgroundColor: "#FFFFFF",
-    tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b}: {c} ({d}%)"
-    },
-    legend: {
-        orient: 'vertical',
-        x: 'left',
-        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-    },
-    series: [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: ['50%', '70%'],
-            avoidLabelOverlap: false,
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    show: true,
-                    textStyle: {
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            data: [
-                { value: 335, name: '直接访问' },
-                { value: 310, name: '邮件营销' },
-                { value: 234, name: '联盟广告' },
-                { value: 135, name: '视频广告' },
-                { value: 1548, name: '搜索引擎' }
-            ]
-        }
-    ]
-}
 class Info extends React.Component {
 
     constructor(props) {
@@ -93,16 +35,13 @@ class Info extends React.Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        const data = await getData();
         const cardHeight = document.getElementById("echart-card").clientWidth;
         var chart1Dom = document.getElementById("chart1");
         chart1Dom.style.width = cardHeight + "px";
         const chart1 = echarts.init(chart1Dom);
-        chart1.setOption(option1);
-        var chart2Dom = document.getElementById("chart2");
-        chart2Dom.style.width = cardHeight + "px";
-        const chart2 = echarts.init(chart2Dom);
-        chart2.setOption(option2);
+        chart1.setOption(data);
     }
 
     render() {
