@@ -36,12 +36,15 @@ class Info extends React.Component {
     }
 
     async componentDidMount() {
-        const data = await getData();
+        await getData((option) => this.renderChart(option));
+    }
+
+    renderChart(option) {
         const cardHeight = document.getElementById("echart-card").clientWidth;
         var chart1Dom = document.getElementById("chart1");
         chart1Dom.style.width = cardHeight + "px";
         const chart1 = echarts.init(chart1Dom);
-        chart1.setOption(data);
+        chart1.setOption(option);
     }
 
     render() {

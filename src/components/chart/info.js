@@ -13,12 +13,16 @@ var option = {
     }]
 }
 
-export function getData() {
+export function getData(callback) {
     // 在这里面写调动websocket获取一个echarts报表数据
     var data;
+    var ws = new WebSocket("ws://121.40.165.18:8088");
+    ws.onopen = function () {
+        ws.send("-------------hello...");
+    };
 
-
-    data = option; // 用你获取到数据替换这句
-    // 最终返回的数据就是一个完整的echarts options(类似于最上面的option)，我会直接把这个data --> echarts.setOption(data);
-    return data;
+    ws.onmessage = function (enevt) {
+        console.log("---------message" + enevt.data);
+        callback(option);
+    }
 }
